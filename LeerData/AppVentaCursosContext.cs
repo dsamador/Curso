@@ -8,6 +8,14 @@ namespace LeerData
     /* Un DdSet representa una vista o una tabla de la base de datos */
     public class AppVentaCursosContext : DbContext
     {
-        
+        private const string connectionString = @"Data Source=.;Initial Catalog=CursosOnline;Integrated Security=True";
+
+        /* Metodo que viene de la clase de la cual heredamos en esta clase 
+         DbContext, crea la instancia al servidor SQLServer al que queremos conectarnos */
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder){
+            optionsBuilder.UseSqlServer(connectionString);
+        }
+
+        public DbSet<Curso> Curso{get;set;}
     }
 }
