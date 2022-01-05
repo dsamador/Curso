@@ -1,7 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.SqlServer;
 
-namespace LeerData
+namespace leerdata
 {
     /* Una instancia de DbContext representa una sesion con la base de datos a la que nos queremos conectar
     en pocas palabras es la base de datos */
@@ -16,6 +16,7 @@ namespace LeerData
             optionsBuilder.UseSqlServer(connectionString);
         }
 
-        public DbSet<Curso> Curso{get;set;}
+        /* Convierte a la clase curso en una entidad */
+        public DbSet<Curso> Curso{get; set;}
     }
 }
