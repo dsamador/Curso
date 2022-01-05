@@ -13,10 +13,12 @@ namespace leerdata
                 /* El metodo AsNoTracking permite no guardar en memoria el IQeryable que es devuelto,
                     el IQueryable es un arreglo de la consulta a base de datos
                  */
-                var cursos = db.Curso.AsNoTracking();
+                var cursos = db.Curso.Include(p => p.PrecioPromocion).AsNoTracking();
+
                 foreach (var curso in cursos){
-                    Console.WriteLine(curso.Titulo + "----" + curso.Descripcion);
+                    Console.WriteLine($"Curso: {curso.Titulo} -- Precio: {curso.PrecioPromocion.PrecioActual}");
                 }
+                
             }
         }
     }
