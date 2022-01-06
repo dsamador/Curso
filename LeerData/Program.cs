@@ -32,6 +32,18 @@ namespace leerdata
                         System.Console.WriteLine($"*********** {comentario.Alumno} dice: {comentario.ComentarioTexto}");
                     }
                 }
+
+                System.Console.WriteLine("\n");
+
+                /* Esta consulta jala a tres tablas */
+                var cursos3 = db.Curso.Include(c => c.InstructorLink).ThenInclude(ci => ci.Instructor);
+                foreach (var curso in cursos){
+                    Console.WriteLine(curso.Titulo);
+                    foreach (var insLink in curso.InstructorLink)
+                    {
+                        Console.WriteLine("**********", insLink.Instructor.Nombre);
+                    }
+                }
                 
             }
         }
