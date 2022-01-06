@@ -17,7 +17,8 @@ namespace leerdata
         }
 
         /* Convierte a la clase curso en una entidad */
-        public DbSet<Curso> Curso{get; set;}
-        public DbSet<Precio> Precio{get; set;}
+        public DbSet<Curso> Curso { get; set; }
+        public DbSet<Precio> Precio { get; set; }
+        public DbSet<Comentario> Comentario { get; set; }
     }
 }

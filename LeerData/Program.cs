@@ -18,6 +18,20 @@ namespace leerdata
                 foreach (var curso in cursos){
                     Console.WriteLine($"Curso: {curso.Titulo} -- Precio: {curso.PrecioPromocion.PrecioActual}");
                 }
+
+
+                System.Console.WriteLine("\n");
+
+
+                var cursos2 = db.Curso.Include(c => c.ComentarioLista).AsNoTracking();
+
+                foreach (var curso in cursos2){
+                    System.Console.WriteLine(curso.Titulo);
+                    foreach (var comentario in curso.ComentarioLista)
+                    {
+                        System.Console.WriteLine($"*********** {comentario.Alumno} dice: {comentario.ComentarioTexto}");
+                    }
+                }
                 
             }
         }
